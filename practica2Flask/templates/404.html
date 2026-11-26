@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block titulo %}Página no encontrada{% endblock %}
+
+{% block contenido %}
+<div class="text-center py-5">
+    <h1 class="display-4">404</h1>
+    <p class="lead">No encontramos lo que buscabas. El registro o la página no existe.</p>
+    <a href="{{ url_for('listar_carreras') }}" class="btn btn-primary">Ir a carreras</a>
+    <a href="{{ url_for('listar_estudiantes') }}" class="btn btn-outline-secondary">Ir a estudiantes</a>
+</div>
+{% endblock %}

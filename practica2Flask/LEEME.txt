@@ -1,0 +1,25 @@
+PRÁCTICA Nro 2 - CRUD con Flask y dos tablas relacionadas (INF-133)
+
+Requisitos obligatorios
+- Python 3.10 o superior
+- XAMPP (Apache y MySQL iniciados)
+
+Instrucciones
+1. Inicie Apache y MySQL desde el panel de XAMPP.
+2. En phpMyAdmin, importe el archivo .sql de la base de datos (o ejecute base_datos.sql).
+   La base se llama "bdacademico" (usuario root, sin contraseña).
+3. Abra una terminal en la carpeta del proyecto y cree el entorno virtual:
+       python -m venv venv
+4. Active el entorno virtual:
+       Windows:      venv\Scripts\activate
+5. Instale las dependencias:
+       pip install -r requirements.txt
+6. Ejecute la aplicación:
+       python app.py
+7. Abra en el navegador: http://127.0.0.1:5000
+
+Estructura
+- app.py            Configuración de Flask y rutas
+- db.py             Conexión y funciones de acceso a datos
+- templates/        Plantillas HTML 
+- requirements.txt  Dependencias

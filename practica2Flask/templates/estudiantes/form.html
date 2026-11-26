@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block titulo %}{{ titulo }}{% endblock %}
+
+{% block contenido %}
+<h1 class="h3 mb-3">{{ titulo }}</h1>
+
+{% if not carreras %}
+<div class="alert alert-warning">
+    Primero debes <a href="{{ url_for('crear_carrera') }}" class="alert-link">crear una carrera</a>
+    para poder registrar estudiantes.
+</div>
+{% endif %}
+
+<form method="post" class="bg-white border rounded p-4" novalidate>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre"
+                   maxlength="80" required value="{{ estudiante.nombre or '' }}">
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="apellido" class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="apellido" name="apellido"
+                   maxlength="80" required value="{{ estudiante.apellido or '' }}">
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="correo" class="form-label">Correo</label>
+        <input type="email" class="form-control" id="correo" name="correo"
+               maxlength="120" required value="{{ estudiante.correo or '' }}">
+    </div>
+    <div class="mb-3">
+        <label for="carrera_id" class="form-label">Carrera</label>
+        <select class="form-select" id="carrera_id" name="carrera_id" required>
+            <option value="">Seleccione una carrera</option>
+            {% for c in carreras %}
+                <option value="{{ c.id }}"
+                        {{ 'selected' if c.id|string == estudiante.carrera_id|string }}>{{ c.nombre }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a href="{{ url_for('listar_estudiantes') }}" class="btn btn-outline-secondary">Cancelar</a>
+</form>
+{% endblock %}
